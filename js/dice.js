@@ -14,6 +14,7 @@ var playerOne=new Player("score1","global1",0,0);
 var playerTwo=new Player("score2","global2",0,0);
 var roll=document.getElementById("roll");
 var hold=document.getElementById("hold");
+var newGame=document.getElementById("new");
 
 //Evénement du click sur le bouton 'roll'
 roll.addEventListener('click',()=>{
@@ -82,6 +83,16 @@ hold.addEventListener('click',()=>{
   }
 
 });
+
+// Evènement du click sur le bouton 'new game'
+newGame.addEventListener('click',()=>{
+
+  reset(playerOne);
+  reset(playerTwo);
+  tour=1;
+
+});
+
 // Fonction qui génère un entier aléatoirement entre deux entiers
 function entierAleatoire(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -93,6 +104,16 @@ function changeGlobal(id,idCurrent,score){
   var current=document.getElementById(idCurrent);
   global.innerHTML=score;
   current.innerHTML=0;
+}
+
+// Fonction qui remet les scores à 0.
+function reset(player){
+  var global=document.getElementById(player.currentScoreName);
+  var current=document.getElementById(player.globalScoreName);
+  global.innerHTML=0;
+  current.innerHTML=0;
+  player.current=0;
+  player.global=0;
 }
 
 // Fonction qui change de tour et passe la pastille rouge à l'autre joueur 
