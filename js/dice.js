@@ -90,7 +90,7 @@ newGame.addEventListener('click',()=>{
   reset(playerOne);
   reset(playerTwo);
   tour=1;
-
+  changeTour(tour);
 });
 
 // Fonction qui génère un entier aléatoirement entre deux entiers
