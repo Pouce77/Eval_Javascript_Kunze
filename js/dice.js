@@ -107,6 +107,7 @@ newGame.addEventListener('click',()=>{
   reset(playerTwo);
   tour=2;
   changeTour(tour);
+  tour=1;
   var end=document.getElementById('end');
       end.style.display="none";
 });
