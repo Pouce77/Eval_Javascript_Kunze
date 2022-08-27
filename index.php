@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- <title>Jeux de dé</title>
+<title>Jeux de dé</title>
 </head>
 <body>
   <div class="container">
@@ -59,6 +59,9 @@
       <div class="button"><span id="roll" class="material-icons-outlined rouge600">sync</span>Roll dice</div>
       <div class="button"><span id="hold" class="material-icons-outlined rouge600">save_alt</span>Hold</div>
     </div>
+  </div>
+  <div id="end" class="endGame">
+    Partie terminée !!!
   </div>
   <script src="js/dice.js"></script>
 </body>

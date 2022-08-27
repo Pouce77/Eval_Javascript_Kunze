@@ -75,10 +75,15 @@ hold.addEventListener('click',()=>{
 
   if(tour==1){
     playerOne.global+=playerOne.current;
+    if(playerOne.global==100){
+        var end=document.getElementById('end');
+        end.style.display="initial";
+    }else{
     changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
     changeTour(1);
     tour=2;
     playerOne.current=0;
+    }
   }else{
     playerTwo.global+=playerTwo.current;
     changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
