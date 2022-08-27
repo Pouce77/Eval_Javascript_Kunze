@@ -24,6 +24,8 @@ roll.addEventListener('click',()=>{
   if (tour!=1){player=playerTwo}
 
   //animation du dé
+  var audio = new Audio('son.mp3');
+      audio.play();
   var i=0;
   var y=0;
     //changement du chiffre du dé pendant 24 intervalles de 100ms
@@ -43,6 +45,8 @@ roll.addEventListener('click',()=>{
         // si le résultat est 1
         if(chiffre==1){
           current.innerHTML=0;
+          var audiolost = new Audio('lost.wav');
+              audiolost.play();
 
           //si c'est le tour du joueur 1
           if(tour==1){
@@ -63,6 +67,7 @@ roll.addEventListener('click',()=>{
         }
       }
     },100);  
+   
 });
 
 // Evènement click sur le bouton 'hold'
