@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  <title>Jeux de dé</title>
 </head>
 <body>
@@ -16,9 +17,12 @@
     <div class="player one">
       <div class="playerAndScore">
         <div class="player-style">
-          Player 1
+          Player 1 <span id="circle1" class="material-icons circle">
+            lens
+            </span>
+            
         </div>
-        <div class="globalScore">
+        <div id="global1" class="globalScore">
           0
         </div>
       </div>
@@ -34,9 +38,11 @@
     <div class="player two">
       <div class="playerAndScore">
         <div class="player-style">
-          Player 2
+          Player 2 <span  id="circle2" class="material-icons circle">
+            lens
+            </span>
         </div>
-        <div class="globalScore">
+        <div id="global2" class="globalScore">
           0
         </div>
       </div>
@@ -52,11 +58,11 @@
     </div>
   </div>
   <div class="command">
-    <div class="fontCommand newGame"><span class="material-icons-outlined rouge600">add_circle_outline</span>New Game</div>
+    <div class="fontCommand newGame"><span id="new" class="material-icons-outlined rouge600">add_circle_outline</span>New Game</div>
     <div class="dice"><img  id=nbDice src="img/cinq.png" alt="cinq"></div>
     <div class="commandItem fontCommand">
       <div class="newGame"><span id="roll" class="material-icons-outlined rouge600">sync</span>Roll dice</div>
-      <div class="newGame"><span class="material-icons-outlined rouge600">save_alt</span>Hold</div>
+      <div class="newGame"><span id="hold" class="material-icons-outlined rouge600">save_alt</span>Hold</div>
     </div>
   </div>
   <script src="js/dice.js"></script>
