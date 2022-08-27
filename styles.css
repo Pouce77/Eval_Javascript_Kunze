@@ -104,3 +104,28 @@
 #circle2{
   display: none;
 }
+
+@media screen and (max-width: 700px){
+  
+  .command{
+    flex-direction: row;
+    width: 100%;
+    margin: 5px;
+    left:auto;
+  }
+  .newGame{
+    flex-direction: column;
+  }
+  .player{
+    justify-content: space-between;
+    padding-top: 30px;
+  }
+  .globalScore{
+    font-size: 6em;
+  }
+  .currentScore{
+    margin-bottom: 30px;
+  }
+
+
+}
