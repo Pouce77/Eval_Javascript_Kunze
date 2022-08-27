@@ -75,23 +75,29 @@ hold.addEventListener('click',()=>{
 
   if(tour==1){
     playerOne.global+=playerOne.current;
-    if(playerOne.global>=20){
+      if(playerOne.global>=20){
         var end=document.getElementById('end');
         end.style.display="initial";
-    }else{
-    changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
-    changeTour(1);
-    tour=2;
-    playerOne.current=0;
-    }
+        changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
+      }else{
+        changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
+        changeTour(1);
+        tour=2;
+        playerOne.current=0;
+      }
   }else{
     playerTwo.global+=playerTwo.current;
-    changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
-    changeTour(2);
-    tour=1;
-    playerTwo.current=0;
+      if(playerTwo.global>=20){
+        var end=document.getElementById('end');
+        end.style.display="initial";
+        changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
+      }else{
+        changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
+        changeTour(2);
+        tour=1;
+        playerTwo.current=0;
+      }
   }
-
 });
 
 // Evènement du click sur le bouton 'new game'
@@ -101,6 +107,8 @@ newGame.addEventListener('click',()=>{
   reset(playerTwo);
   tour=1;
   changeTour(tour);
+  var end=document.getElementById('end');
+      end.style.display="none";
 });
 
 // Fonction qui génère un entier aléatoirement entre deux entiers
