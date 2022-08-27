@@ -64,6 +64,7 @@ roll.addEventListener('click',()=>{
     },100);  
 });
 
+// Evènement click sur le bouton 'hold'
 hold.addEventListener('click',()=>{
 
   if(tour==1){
@@ -81,11 +82,12 @@ hold.addEventListener('click',()=>{
   }
 
 });
-
+// Fonction qui génère un entier aléatoirement entre deux entiers
 function entierAleatoire(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+// fonction qui change le score global du joueur en cours et remet le score courant à 0
 function changeGlobal(id,idCurrent,score){
   var global=document.getElementById(id);
   var current=document.getElementById(idCurrent);
@@ -93,6 +95,7 @@ function changeGlobal(id,idCurrent,score){
   current.innerHTML=0;
 }
 
+// Fonction qui change de tour et passe la pastille rouge à l'autre joueur 
 function changeTour(tour){
   if(tour==1){
     var circle1=document.getElementById("circle1");
