@@ -30,15 +30,14 @@
   position: absolute;
   z-index:2000;
   display: none;
-  margin: auto;
-  width: 70%;
   padding: 20px;
   top:40%;
   left:40%;
   background-color:#fd5757;
   font-family: 'Lato', sans-serif;
   font-size: xx-large;
-
+  border-radius: 5px;
+  box-shadow: 4px 4px 4px 4px black;
 }
 .one{
   background-color: rgb(192,192,192);
