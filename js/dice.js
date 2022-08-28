@@ -75,7 +75,7 @@ hold.addEventListener('click',()=>{
 
   if(tour==1){
     playerOne.global+=playerOne.current;
-      if(playerOne.global>=20){
+      if(playerOne.global>=100){
         var end=document.getElementById('end');
         end.style.display="initial";
         changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
