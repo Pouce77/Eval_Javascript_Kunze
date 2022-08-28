@@ -87,7 +87,7 @@ hold.addEventListener('click',()=>{
       }
   }else{
     playerTwo.global+=playerTwo.current;
-      if(playerTwo.global>=20){
+      if(playerTwo.global>=100){
         var end=document.getElementById('end');
         end.style.display="initial";
         changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
