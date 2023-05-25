@@ -23,8 +23,8 @@ roll.addEventListener('click',()=>{
   var player=playerOne;
   if (tour!=1){player=playerTwo}
 
-  //animation du dé
-  var audio = new Audio('son.mp3');
+//animation du dé
+  var audio = new Audio('sounds/son.mp3');
       audio.play();
   var i=0;
   var y=0;
@@ -45,7 +45,7 @@ roll.addEventListener('click',()=>{
         // si le résultat est 1
         if(chiffre==1){
           current.innerHTML=0;
-          var audiolost = new Audio('lost.wav');
+          var audiolost = new Audio('sounds/lost.wav');
               audiolost.play();
 
           //si c'est le tour du joueur 1

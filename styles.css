@@ -140,6 +140,11 @@
   .currentScore{
     margin-bottom: 30px;
   }
-
+  .button{
+    flex-direction: column;
+  }
+  .fontCommand{
+    font-size: medium;
+  }
 
 }
