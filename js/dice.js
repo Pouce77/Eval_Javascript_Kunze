@@ -15,6 +15,7 @@ var playerTwo=new Player("score2","global2",0,0);
 var roll=document.getElementById("roll");
 var hold=document.getElementById("hold");
 var newGame=document.getElementById("new");
+const end=document.getElementById('end');
 
 //Evénement du click sur le bouton 'roll'
 roll.addEventListener('click',()=>{
@@ -76,8 +77,8 @@ hold.addEventListener('click',()=>{
   if(tour==1){
     playerOne.global+=playerOne.current;
       if(playerOne.global>=100){
-        var end=document.getElementById('end');
         end.style.display="initial";
+        end.appendChild(document.createTextNode("C'est terminée ! Le joueur 1 a gagné !"));
         changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
       }else{
         changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
@@ -88,8 +89,8 @@ hold.addEventListener('click',()=>{
   }else{
     playerTwo.global+=playerTwo.current;
       if(playerTwo.global>=100){
-        var end=document.getElementById('end');
         end.style.display="initial";
+        end.appendChild(document.createTextNode("C'est terminée ! Le joueur 2 a gagné !"));
         changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
       }else{
         changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
@@ -98,6 +99,17 @@ hold.addEventListener('click',()=>{
         playerTwo.current=0;
       }
   }
+});
+
+//Evènement du click sur la croix de partie terminée
+const close=document.getElementById('close');
+close.addEventListener('click',()=>{
+  end.style.display="none";
+  reset(playerOne);
+  reset(playerTwo);
+  tour=2;
+  changeTour(tour);
+  tour=1;
 });
 
 // Evènement du click sur le bouton 'new game'
