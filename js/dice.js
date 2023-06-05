@@ -135,8 +135,8 @@ function reset(player){
   const currentreset=document.getElementById(player.globalScoreName);
   globalreset.innerHTML=0;
   currentreset.innerHTML=0;
-  player.currentreset=0;
-  player.globalreset=0;
+  player.current=0;
+  player.global=0;
 }
 
 // Fonction qui change de tour et passe la pastille rouge à l'autre joueur 
