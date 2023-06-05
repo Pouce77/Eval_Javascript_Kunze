@@ -1,4 +1,4 @@
-class Player{
+/*class Player{
 
   constructor(currentScoreName,globalScoreName,current,global){
     this.currentScoreName=currentScoreName;
@@ -7,7 +7,10 @@ class Player{
     this.global=global;
   }
   
-}
+}*/
+
+import Player from './Player.js'
+
 //Initialisation des variables
 var tour=1;
 var playerOne=new Player("score1","global1",0,0);
@@ -30,7 +33,7 @@ roll.addEventListener('click',()=>{
   var i=0;
   var y=0;
     //changement du chiffre du dé pendant 24 intervalles de 100ms
-    timer=setInterval(function(){
+    let timer=setInterval(function(){
       dice.setAttribute('src',tabChiffre[i]);
       console.log(tabChiffre[i]);
       i++;
