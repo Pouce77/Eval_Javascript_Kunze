@@ -4,15 +4,15 @@ import Player from './Player.js'
 var tour=1;
 var playerOne=new Player("score1","global1",0,0);
 var playerTwo=new Player("score2","global2",0,0);
-var roll=document.getElementById("roll");
-var hold=document.getElementById("hold");
-var newGame=document.getElementById("new");
+const roll=document.getElementById("roll");
+const hold=document.getElementById("hold");
+const newGame=document.getElementById("new");
 const end=document.getElementById('end');
 
 //Evénement du click sur le bouton 'roll'
 roll.addEventListener('click',()=>{
-  var dice=document.getElementById("nbDice");
-  var tabChiffre=["img/un.png","img/deux.png","img/trois.png","img/quatre.png","img/cinq.png","img/six.png"];
+  const dice=document.getElementById("nbDice");
+  const tabChiffre=["img/un.png","img/deux.png","img/trois.png","img/quatre.png","img/cinq.png","img/six.png"];
   var player=playerOne;
   if (tour!=1){player=playerTwo}
 
@@ -123,20 +123,20 @@ function entierAleatoire(min, max){
 
 // fonction qui change le score global du joueur en cours et remet le score courant à 0
 function changeGlobal(id,idCurrent,score){
-  var global=document.getElementById(id);
-  var current=document.getElementById(idCurrent);
+  const global=document.getElementById(id);
+  const current=document.getElementById(idCurrent);
   global.innerHTML=score;
   current.innerHTML=0;
 }
 
 // Fonction qui remet les scores à 0.
 function reset(player){
-  var global=document.getElementById(player.currentScoreName);
-  var current=document.getElementById(player.globalScoreName);
-  global.innerHTML=0;
-  current.innerHTML=0;
-  player.current=0;
-  player.global=0;
+  const globalreset=document.getElementById(player.currentScoreName);
+  const currentreset=document.getElementById(player.globalScoreName);
+  globalreset.innerHTML=0;
+  currentreset.innerHTML=0;
+  player.currentreset=0;
+  player.globalreset=0;
 }
 
 // Fonction qui change de tour et passe la pastille rouge à l'autre joueur 
