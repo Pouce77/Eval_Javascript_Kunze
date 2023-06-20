@@ -1,95 +1,82 @@
 import Player from './Player.js'
 
 //Initialisation des variables
-var tour=1;
-var playerOne=new Player("score1","global1",0,0);
-var playerTwo=new Player("score2","global2",0,0);
+let tour=1;
+const playerOne=new Player("score1","global1",0,0);
+const playerTwo=new Player("score2","global2",0,0);
 const roll=document.getElementById("roll");
 const hold=document.getElementById("hold");
 const newGame=document.getElementById("new");
 const end=document.getElementById('end');
+const dice=document.getElementById("nbDice");
+const tabChiffre=["img/un.png","img/deux.png","img/trois.png","img/quatre.png","img/cinq.png","img/six.png"];
 
 //Evénement du click sur le bouton 'roll'
 roll.addEventListener('click',()=>{
-  const dice=document.getElementById("nbDice");
-  const tabChiffre=["img/un.png","img/deux.png","img/trois.png","img/quatre.png","img/cinq.png","img/six.png"];
-  var player=playerOne;
-  if (tour!=1){player=playerTwo}
 
-//animation du dé
+  let player=playerOne;
+  if (tour!=1){
+    player=playerTwo
+  }
+
+  //animation du dé
   const audio = new Audio('sounds/son.mp3');
       audio.play();
-  var i=0;
-  var y=0;
-    //changement du chiffre du dé pendant 24 intervalles de 100ms
-    let timer=setInterval(function(){
-      dice.setAttribute('src',tabChiffre[i]);
-      console.log(tabChiffre[i]);
-      i++;
-      y++;
-      if(i==6){i=0};
-      if(y==24){clearInterval(timer);
-        //résultat du lancer de dé
-        var chiffre=entierAleatoire(1,6);
-        dice.setAttribute("src",tabChiffre[chiffre-1]);
-        console.log('le chiffre est '+ tabChiffre[chiffre-1]);
-        var current=document.getElementById(player.currentScoreName);
+  let i=0;
+  let y=0;
 
-        // si le résultat est 1
-        if(chiffre==1){
-          current.innerHTML=0;
-          const audiolost = new Audio('sounds/lost.wav');
-              audiolost.play();
+  //changement du chiffre du dé pendant 24 intervalles de 100ms
+  let timer=setInterval(function(){
+    dice.setAttribute('src',tabChiffre[i]);
+    console.log(tabChiffre[i]);
+    i++;
+    y++;
+    if(i==6){
+      i=0
+    };
+    if(y==24){
+      clearInterval(timer);
 
-          //si c'est le tour du joueur 1
-          if(tour==1){
-            changeTour(tour);
-            tour=2;
-          //si c'est le tour du joueur 2
-          }else{
-            changeTour(tour);
-            tour=1;
-          }
+      //résultat du lancer de dé
+      let chiffre=entierAleatoire(1,6);
+      dice.setAttribute("src",tabChiffre[chiffre-1]);
+      console.log('le chiffre est '+ tabChiffre[chiffre-1]);
+      let current=document.getElementById(player.currentScoreName);
+
+      // si le résultat est 1
+      if(chiffre==1){
+        current.innerHTML=0;
+        const audiolost = new Audio('sounds/lost.wav');
+        audiolost.play();
+
+        //si c'est le tour du joueur 1
+        if(tour==1){
+          changeTour(tour);
+          tour=2;
+        //si c'est le tour du joueur 2
         }else{
+          changeTour(tour);
+          tour=1;
+        }
+      }else{
         //changement du current score du joueur en cours
-        var score=parseInt(current.innerHTML);
+        let score=parseInt(current.innerHTML);
         score=score+chiffre;
         current.innerHTML=score;
         console.log(score);
         player.current=score;
-        }
       }
-    },100);  
-   
+    }
+  },100);   
 });
 
 // Evènement click sur le bouton 'hold'
 hold.addEventListener('click',()=>{
 
   if(tour==1){
-    playerOne.global+=playerOne.current;
-      if(playerOne.global>=100){
-        end.style.display="initial";
-        end.appendChild(document.createTextNode("C'est terminée ! Le joueur 1 a gagné !"));
-        changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
-      }else{
-        changeGlobal(playerOne.globalScoreName,playerOne.currentScoreName,playerOne.global);
-        changeTour(1);
-        tour=2;
-        playerOne.current=0;
-      }
+    holdPlayer(playerOne)
   }else{
-    playerTwo.global+=playerTwo.current;
-      if(playerTwo.global>=100){
-        end.style.display="initial";
-        end.appendChild(document.createTextNode("C'est terminée ! Le joueur 2 a gagné !"));
-        changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
-      }else{
-        changeGlobal(playerTwo.globalScoreName,playerTwo.currentScoreName,playerTwo.global);
-        changeTour(2);
-        tour=1;
-        playerTwo.current=0;
-      }
+    holdPlayer(playerTwo)
   }
 });
 
@@ -106,15 +93,34 @@ close.addEventListener('click',()=>{
 
 // Evènement du click sur le bouton 'new game'
 newGame.addEventListener('click',()=>{
-
   reset(playerOne);
   reset(playerTwo);
   tour=2;
   changeTour(tour);
   tour=1;
-  var end=document.getElementById('end');
-      end.style.display="none";
+  end.style.display="none";
 });
+
+// Fonction qui est déclenché lors du click sur le bouton "hold" en fonction du joueur en paramêtre
+function holdPlayer(player){
+  player.global+=player.current;
+  if(player.global>=100){
+    end.style.display="initial";
+    if(tour==1){
+      end.appendChild(document.createTextNode("C'est terminée ! Le joueur 1 a gagné !"));
+    }else{
+      end.appendChild(document.createTextNode("C'est terminée ! Le joueur 2 a gagné !"));
+    }
+    changeGlobal(player.globalScoreName,player.currentScoreName,player.global);
+  }else{
+    changeGlobal(player.globalScoreName,player.currentScoreName,player.global);
+    changeTour(tour);
+    if(tour==1)
+      {tour=2;}
+    else{tour=1;}
+    player.current=0;
+  }
+}
 
 // Fonction qui génère un entier aléatoirement entre deux entiers
 function entierAleatoire(min, max){
@@ -141,15 +147,12 @@ function reset(player){
 
 // Fonction qui change de tour et passe la pastille rouge à l'autre joueur 
 function changeTour(tour){
+  const circle1=document.getElementById("circle1");
+  const circle2=document.getElementById("circle2");
   if(tour==1){
-    var circle1=document.getElementById("circle1");
-    var circle2=document.getElementById("circle2");
     circle1.style.display="none";
     circle2.style.display="initial"
-  
   }else{
-    var circle1=document.getElementById("circle1");
-    var circle2=document.getElementById("circle2");
     circle1.style.display="initial";
     circle2.style.display="none";
   }
