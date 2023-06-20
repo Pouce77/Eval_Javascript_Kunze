@@ -21,7 +21,8 @@ roll.addEventListener('click',()=>{
 
   //animation du dé
   const audio = new Audio('sounds/son.mp3');
-      audio.play();
+  audio.play();
+  
   let i=0;
   let y=0;
 
